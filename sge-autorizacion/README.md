@@ -1,93 +1,123 @@
-# sge-autorizacion
+### sge-autorizacion
+Este proyecto utiliza Quarkus, el Framework Java supersónico y subatómico.
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Si querés saber más sobre Quarkus, podés visitar su sitio web: https://quarkus.io/.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+### ▶️ Ejecutar la aplicación en modo desarrollo
+Podés ejecutar tu aplicación en modo desarrollo (dev mode), lo que habilita recarga en caliente (live coding), utilizando:
 
-## Running the application in dev mode
-
-You can run your application in dev mode that enables live coding using:
-
-```shell script
+bash
+Copiar
+Editar
 ./mvnw quarkus:dev
-```
+NOTA: Quarkus incluye una Dev UI que solo está disponible en modo desarrollo en: http://localhost:8080/q/dev/
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+### 📦 Empaquetar y ejecutar la aplicación
+La aplicación puede empaquetarse con:
 
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
+bash
+Copiar
+Editar
 ./mvnw package
-```
+Esto genera el archivo quarkus-run.jar en el directorio target/quarkus-app/.
+Tené en cuenta que no es un über-jar: las dependencias están copiadas en target/quarkus-app/lib/.
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+Ahora podés ejecutarla con:
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+bash
+Copiar
+Editar
+java -jar target/quarkus-app/quarkus-run.jar
+Si querés crear un über-jar (jar único con todas las dependencias), ejecutá:
 
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
+bash
+Copiar
+Editar
 ./mvnw package -Dquarkus.package.jar.type=uber-jar
-```
+Y luego corré la aplicación así:
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+bash
+Copiar
+Editar
+java -jar target/*-runner.jar
+🧊 Crear un ejecutable nativo
+Podés generar un ejecutable nativo con:
 
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
+bash
+Copiar
+Editar
 ./mvnw package -Dnative
-```
+O, si no tenés GraalVM instalado localmente, podés usar un contenedor para compilarlo:
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-
-```shell script
+bash
+Copiar
+Editar
 ./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
+Luego ejecutalo con:
 
-You can then execute your native executable with: `./target/sge-autorizacion-1.0.0-SNAPSHOT-runner`
+bash
+Copiar
+Editar
+./target/sge-autorizacion-1.0.0-SNAPSHOT-runner
+Más información sobre ejecutables nativos en:
+https://quarkus.io/guides/maven-tooling
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
+📚 Guías relacionadas
+Recursos REST para Hibernate ORM con Panache
+Guía
+Generación automática de recursos REST para tus entidades/repositorios con Panache.
 
-## Related Guides
+REST
+Guía
+Implementación de Jakarta REST utilizando procesamiento en tiempo de compilación y Vert.x.
+⚠️ No es compatible con quarkus-resteasy ni sus extensiones asociadas.
 
-- REST resources for Hibernate ORM with Panache ([guide](https://quarkus.io/guides/rest-data-panache)): Generate Jakarta REST resources for your Hibernate Panache entities and repositories
-- REST ([guide](https://quarkus.io/guides/rest)): A Jakarta REST implementation utilizing build time processing and Vert.x. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it.
-- SmallRye OpenTracing ([guide](https://quarkus.io/guides/opentracing)): Trace your services with SmallRye OpenTracing
-- Hibernate Validator ([guide](https://quarkus.io/guides/validation)): Validate object properties (field, getter) and method parameters for your beans (REST, CDI, Jakarta Persistence)
-- REST Client ([guide](https://quarkus.io/guides/rest-client)): Call REST services
-- SmallRye OpenAPI ([guide](https://quarkus.io/guides/openapi-swaggerui)): Document your REST APIs with OpenAPI - comes with Swagger UI
-- SmallRye JWT ([guide](https://quarkus.io/guides/security-jwt)): Secure your applications with JSON Web Token
-- SmallRye Health ([guide](https://quarkus.io/guides/smallrye-health)): Monitor service health
-- JDBC Driver - Oracle ([guide](https://quarkus.io/guides/datasource)): Connect to the Oracle database via JDBC
+SmallRye OpenTracing
+Guía
+Permite rastrear (tracear) tus servicios.
 
-## Provided Code
-
-### REST Data with Panache
-
-Generating Jakarta REST resources with Panache
-
-[Related guide section...](https://quarkus.io/guides/rest-data-panache)
-
+Hibernate Validator
+Guía
+Validación de propiedades de objetos y parámetros de métodos.
 
 ### REST Client
+Guía
+Consumí servicios REST externos de manera declarativa.
 
-Invoke different services through REST with JSON
+### SmallRye OpenAPI
+Guía
+Documentación de tus APIs REST con OpenAPI y Swagger UI.
 
-[Related guide section...](https://quarkus.io/guides/rest-client)
+### SmallRye JWT
+Guía
+Seguridad con JSON Web Tokens.
+
+SmallRye Health
+Guía
+Monitoreo del estado de salud de la aplicación.
+
+Driver JDBC - Oracle
+Guía
+Conexión a bases de datos Oracle mediante JDBC.
+
+🧪 Código provisto
+REST Data con Panache
+Generación automática de recursos REST utilizando Panache.
+
+Sección relacionada de la guía...
+
+Cliente REST
+Consumí servicios externos vía REST y JSON.
+
+Sección relacionada...
 
 ### REST
+Arrancá rápido con servicios REST Web.
 
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+Sección relacionada...
 
 ### SmallRye Health
+Monitoreá el estado de salud de tu aplicación con SmallRye Health.
 
-Monitor your application's health using SmallRye Health
+Sección relacionada...
 
-[Related guide section...](https://quarkus.io/guides/smallrye-health)
